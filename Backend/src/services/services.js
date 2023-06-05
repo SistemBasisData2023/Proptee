@@ -1,15 +1,16 @@
-const res = require('express/lib/response');
-const { use } = require('passport/lib');
 const db = require('../configs/database');
-const helper = require('../utils/helper');
+const res = require('express/lib/response');
+const helper = require('../hash/hash');
 
 async function userLogin (pt){
     const {username, password} = pt;
     const query = `SELECT * FROM users WHERE username = '${username}'`;
     const result = await db.query(query);
+    
     if(result.rowCount > 0){
         const user = result.rows[0];
-        if(user.password === password){
+        const comparePass = await helper.comparePassword(password, user.password);
+        if(comparePass){
             return {
                 message: 'Login successful',
                 user
@@ -24,7 +25,8 @@ async function userLogin (pt){
 
 async function userRegister (pt){
     const {username, password, email} = pt;
-    const query = `INSERT INTO users (username, password, email) VALUES ('${username}', '${password}', '${email}')`;
+    const pass = await helper.hashPassword(password);
+    const query = `INSERT INTO users (username, password, email) VALUES ('${username}', '${pass}', '${email}')`;
     const result = await db.query(query);
     if(result.rowCount === 1){
         return {
@@ -86,7 +88,8 @@ async function agentLogin (pt){
     const result = await db.query(query);
     if(result.rowCount > 0){
         const user = result.rows[0];
-        if(user.password === password){
+        const comparePass = await helper.comparePassword(password, user.password);
+        if(comparePass){
             return {
                 message: 'Login successful',
                 user
@@ -101,7 +104,9 @@ async function agentLogin (pt){
 
 async function agentRegister (pt){
     const {username, password, email} = pt;
-    const query = `INSERT INTO agent (username, password, email) VALUES ('${username}', '${password}', '${email}')`;
+    const pass = await helper.hashPassword(password);
+
+    const query = `INSERT INTO agent (username, password, email) VALUES ('${username}', '${pass}', '${email}')`;
     const result = await db.query(query);
     if(result.rowCount === 1){
         return {
@@ -116,7 +121,7 @@ async function agentRegister (pt){
 
 async function getAgent (agent){
     if(agent){
-        const query = `SELECT * FROM agent WHERE "agent_id" = '${agent.agent_id}'`;
+        const query = `SELECT * FROM agent WHERE "agent_id" = ${agent.agent_id}`;
         const result = await db.query(query);
         if(result.rowCount === 1){
             return {
@@ -137,16 +142,16 @@ async function getAgent (agent){
 
 async function deleteAgent (agent){
     if(agent){
-        const query = `DELETE FROM users WHERE "agent_id" = ${agent.agent_id}`;
+        const query = `DELETE FROM agent WHERE "agent_id" = ${agent.agent_id}`;
         const result = await db.query(query);
         if(result.rowCount === 1){
             return {
-                message: 'User deleted'
+                message: 'Agent deleted'
             }
         }
         else{
             return {
-                message: 'User not found'
+                message: 'Agent not found'
             }
         }
     }
@@ -157,11 +162,11 @@ async function deleteAgent (agent){
     }
 }
 
-async function addProperties (pt, user){
+async function addProperties (pt, agent){
     const {Nama, Description, alamat, luas, Harga, jumlah_kamar, jumlah_kamar_mandi, Status} = pt;
-    if(user){
+    if(agent){
         const query = `INSERT INTO properties (Nama, Description, alamat, luas, Harga, jumlah_kamar, jumlah_kamar_mandi, agent_id, Status) 
-        VALUES ('${Nama}', '${Description}', '${alamat}', '${luas}', ${Harga}, ${jumlah_kamar}, ${jumlah_kamar_mandi}, '${user.agent_id}','${Status}')`;
+        VALUES ('${Nama}', '${Description}', '${alamat}', '${luas}', ${Harga}, ${jumlah_kamar}, ${jumlah_kamar_mandi}, '${agent.agent_id}','${Status}')`;
         const result = await db.query(query);
         if(result.rowCount === 1){
             return {
@@ -180,18 +185,42 @@ async function addProperties (pt, user){
     }
 }
 
-async function showProperties (user){
-    if(user){
-        const query = `SELECT * FROM properties WHERE Nama='${user.Nama}'`;
+async function showProperties (agent){
+    if(agent){
+        const query = `SELECT * FROM properties WHERE property_id=${agent.property_id}`;
         const result = await db.query(query);
         if(result.rowCount > 0){
             return {
                 message: 'Property Found',
-                showIndividualTask : result.rows
+                showProperties : result.rows
             }
         }else{
             return{
                 message: 'No property Found' 
+            } 
+        }
+    }
+    else{
+        return {
+            message: 'User not logged in'
+        }
+    }
+}
+
+async function updateProperties (pt, agent){
+    const {property_id, Nama, Description, alamat, luas, Harga, jumlah_kamar, jumlah_kamar_mandi, Status} = pt;
+    if(agent){
+        const query = `UPDATE properties 
+        SET Nama='${Nama}', Description='${Description}', alamat='${alamat}', luas='${luas}', Harga=${Harga}, jumlah_kamar=${jumlah_kamar}, 
+        jumlah_kamar_mandi=${jumlah_kamar_mandi}, Status='${Status}' WHERE property_id=${property_id} AND agent_id= ${agent.agent_id}`;
+        const result = await db.query(query);
+        if(result.rowCount > 0){
+            return {
+                message: 'Property Updated'
+            }
+        }else{
+            return{
+                message: 'Error'
             } 
         }
     }
@@ -232,11 +261,34 @@ async function showTransactions (user){
         if(result.rowCount > 0){
             return {
                 message: 'Transaction Found',
-                showIndividualTask : result.rows
+                showTransactions : result.rows
             }
         }else{
             return{
                 message: 'No transaction Found' 
+            } 
+        }
+    }
+    else{
+        return {
+            message: 'User not logged in'
+        }
+    }
+}
+
+async function updateTransactions (pt, user){
+    const {transaction_id, Nama, Harga, Status} = pt;
+    if(user){
+        const query = `UPDATE transactions 
+        SET Nama='${Nama}', Harga=${Harga}, Status='${Status}' WHERE transaction_id=${transaction_id} AND agent_id= ${user.agent_id}`;
+        const result = await db.query(query);
+        if(result.rowCount > 0){
+            return {
+                message: 'Transaction Updated'
+            }
+        }else{
+            return{
+                message: 'Error'
             } 
         }
     }
@@ -259,5 +311,7 @@ module.exports = {
     addProperties,
     showProperties,
     addTransactions,
-    showTransactions
+    showTransactions,
+    updateProperties,
+    updateTransactions
 }

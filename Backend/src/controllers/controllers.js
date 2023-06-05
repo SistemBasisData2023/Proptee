@@ -4,7 +4,7 @@ const ptService = require('../services/services');
 async function userLogin(req,res){
     try{
         const result = await ptService.userLogin(req.body);
-        //res.json({message: 'success'});
+        res.json(result);
     }catch(err){
         res.json(err);
     }
@@ -40,7 +40,7 @@ async function deleteUser(req,res){
 async function agentLogin(req,res){
     try{
         const result = await ptService.agentLogin(req.body);
-        //res.json({message: 'success'});
+        res.json(result);
     }catch(err){
         res.json(err);
     }
@@ -66,7 +66,7 @@ async function getAgent(req,res){
 
 async function deleteAgent(req,res){
     try{
-        const result = await ptService.deleteUser(req.body);
+        const result = await ptService.deleteAgent(req.body);
         res.json(result);
     }catch(err){
         res.json(err);
@@ -109,6 +109,24 @@ async function showTransactions(req,res){
     }
 }
 
+async function updateProperties(req,res){
+    try{
+        const result = await ptService.updateProperties(req.body,req.body);
+        res.json(result);
+    }catch(err){
+        res.json(err);
+    }
+}
+
+async function updateTransactions(req,res){
+    try{
+        const result = await ptService.updateTransactions(req.body,req.body);
+        res.json(result);
+    }catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
     userLogin,
     userRegister,
@@ -121,5 +139,7 @@ module.exports = {
     addProperties,
     showProperties,
     addTransactions,
-    showTransactions
+    showTransactions,
+    updateProperties,
+    updateTransactions
 }

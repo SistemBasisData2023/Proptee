@@ -1,4 +1,3 @@
-const passport = require('passport');
 const express = require('express');
 const router = express.Router();
 const ptController = require('../controllers/controllers');
@@ -26,5 +25,9 @@ router.get('/showproperties', ptController.showProperties);
 router.post('/addtransactions', ptController.addTransactions);
 
 router.get('/showtransactions', ptController.showTransactions);
+
+router.put('/updateproperties', ptController.updateProperties);
+
+router.put('/updatetransactions', ptController.updateTransactions);
 
 module.exports = router;
