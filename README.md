@@ -78,3 +78,4 @@ The Transactions table is used to store the data of the ```Transactions``` on th
 ### Flowchart View
 
 ```Flowchart```
+  ![Flowchart](https://github.com/SistemBasisData2023/Proptee/blob/19e35d7c76e06a28112efba6190fc4bc70074452/flowchart.png)
