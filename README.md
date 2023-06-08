@@ -33,7 +33,7 @@ The Users table is used to store the data of the ```User``` on the website. This
 
 The Agent table is used to store the data of the ```Agent``` on the website. This table has several attributes, including:
 ```
-1. User_ID
+1. Agent_ID
 2. Email
 3. Username
 4. Password
@@ -43,51 +43,37 @@ The Agent table is used to store the data of the ```Agent``` on the website. Thi
 The Properties table is used to store the data of the ```Property``` on the website. This table has several attributes, including:
 ```
 1. Property_ID
-2. Title
-3. Description
-4. Location
-5. Size
-6. Price
-7. Agent_ID
-8. Status (Sell/Rented)
+2. Description
+3. Address
+4. Size
+5. Price
+6. Room_Number
+7. Bathroom_Number
+8. Agent_ID
+9. Status (Sell/Rented)
 ```
-#### 4.  ```Property Rent```
 
-This table has several attributes, including:
-```
-1. Rent_ID
-2. Property_ID
-3. Users_ID
-4. Start_Date
-5. End_Date
-```
-#### 5.  ```Cart```
-
-This table has several attributes, including:
-```
-1. Users_ID
-2. Property_ID
-3. Added_Date
-```
-#### 6.  ```Transactions```
+#### 4.  ```Transactions```
 
 The Transactions table is used to store the data of the ```Transactions``` on the website. This table has several attributes, including:
 ```
 1. Transactions_ID
-2. Users_ID
-3. Agent_ID
-4. Property_ID
-5. Status (Sell/Rented)
-6. Transactions_Date
-7. Total_Price
+2. Name
+3. User_ID
+4. Agent_ID
+5. Property_ID
+6. Status (Sell/Rented)
+7. Transactions_Date
+8. Price
 ```
 
 ### Relation Table and UML Diagram View
 
 ```Table Relational or ERD:```
+  ![ERD](https://github.com/SistemBasisData2023/Proptee/blob/02570fe79400ce2609855189e549779cf9110dfa/erd.jpg)
 
 ```UML:```
-
+  ![UML](https://github.com/SistemBasisData2023/Proptee/blob/02570fe79400ce2609855189e549779cf9110dfa/uml.png)
 
 ### Flowchart View
 
