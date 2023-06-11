@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Proptee - Sign up / Login Form</title>
+  <link rel="stylesheet" href="./loginRegister.css">
+
+</head>
+<body>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slide Navbar</title>
+	<link rel="stylesheet" type="text/css" href="slide navbar style.css">
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">Sign Up</label>
+					<input id="usernameRegister" type="text" name="txt" placeholder="Username" required="">
+					<input id="emailRegister" type="email" name="email" placeholder="Email" required="">
+					<input id="passwordRegister" type="password" name="pswd" placeholder="Password" required="">
+					<button id="registerButton">Sign Up</button>
+
+				</form>
+				<!-- <p>Welcome to Proptee!</p> -->
+			</div>
+
+			<div class="login">
+				<form>
+					<label for="chk" aria-hidden="true">Login</label>
+					<input id="usernameLogin" type="text" name="txt" placeholder="Username" required="">
+					<input id="passwordLogin" type="password" name="pswd" placeholder="Password" required="">
+					<button id="loginButton">Login</button>
+				</form>
+				<a href="./index.html"><button>Go Back to Web</button></a>
+			</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const registerButton = document.getElementById('registerButton');
+
+    registerButton.addEventListener('click', async () => {
+
+      const username = document.getElementById('usernameRegister').value;
+      const email = document.getElementById('emailRegister').value;
+      const password = document.getElementById('passwordRegister').value;
+
+      if (!username || !email || !password) {
+        window.alert('Null Value! Mohon isi seluruh form!');
+        return;
+      }
+
+      try {
+        const response = await axios.post('/pt/userregister', {username, email, password });
+
+        // Handle the successful registration response here (e.g., show success message to the user)
+        console.log(response.data.message);
+      } catch (error) {
+        console.error(error);
+        // Handle registration error here (e.g., show error message to the user)
+      }
+    });
+  </script>
+  <script>
+    const loginButton = document.getElementById('loginButton');
+
+    loginButton.addEventListener('click', async () => {
+      event.preventDefault();
+      const username = document.getElementById('usernameLogin').value;
+      const password = document.getElementById('passwordLogin').value;
+
+      try {
+        const response = await axios.post('/pt/userlogin', {username, password});
+        console.log(response); // Log the response to inspect its structure
+
+        // Handle the successful login response here (e.g., redirect to menu page)
+        if (response.data.message === 'Login successful') {
+        window.alert('Login successful!');
+        window.location.href = '/indexSuccessLogin.html'
+        } else {
+          // Show error message to the user
+          window.alert('Login Failed!');
+          console.error(response.data.message);
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle login error here (e.g., show error message to the user)
+      }
+    });
+  </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
