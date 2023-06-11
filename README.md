@@ -73,7 +73,7 @@ The Transactions table is used to store the data of the ```Transactions``` on th
 ### Relation Table and UML Diagram View
 
 ```Table Relational or ERD:```
-  ![ERD](https://github.com/SistemBasisData2023/Proptee/blob/02570fe79400ce2609855189e549779cf9110dfa/erd.jpg)
+  ![ERD](https://github.com/SistemBasisData2023/Proptee/blob/14b190edf869c4cc849930a60e477649fbdede24/erd.drawio.png)
 
 ```UML:```
   ![UML](https://github.com/SistemBasisData2023/Proptee/blob/02570fe79400ce2609855189e549779cf9110dfa/uml.png)
