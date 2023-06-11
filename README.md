@@ -4,7 +4,7 @@
 </div>
 
 
-#### _Real Estate Management Website_
+### _Real Estate Management Website_
 
 Proptee is an online real estate management platform that facilitates the process of buying, selling, and renting properties between real estate agents and potential buyers.
 
@@ -12,6 +12,9 @@ Proptee is an online real estate management platform that facilitates the proces
         - Cecilia Inez Reva Manurung          - 2106636994
         - Muhammad Najih Aflah                - 2106653880
         - Prima Shalih	                  - 2106636962
+        
+## Power Point
+[![Link PPT Presentasi](https://img.shields.io/badge/Canva-%2300C4CC.svg?&style=for-the-badge&logo=Canva&logoColor=white)](https://www.canva.com/design/DAFk-Yb8mNo/hy6cA0K54DfDdT7fyRYR8g/edit?utm_content=DAFk-Yb8mNo&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## Features
 -   User Registration and Login
@@ -70,7 +73,7 @@ The Transactions table is used to store the data of the ```Transactions``` on th
 ### Relation Table and UML Diagram View
 
 ```Table Relational or ERD:```
-  ![ERD](https://github.com/SistemBasisData2023/Proptee/blob/02570fe79400ce2609855189e549779cf9110dfa/erd.jpg)
+  ![ERD](https://github.com/SistemBasisData2023/Proptee/blob/14b190edf869c4cc849930a60e477649fbdede24/erd.drawio.png)
 
 ```UML:```
   ![UML](https://github.com/SistemBasisData2023/Proptee/blob/02570fe79400ce2609855189e549779cf9110dfa/uml.png)
@@ -79,3 +82,4 @@ The Transactions table is used to store the data of the ```Transactions``` on th
 
 ```Flowchart```
   ![Flowchart](https://github.com/SistemBasisData2023/Proptee/blob/19e35d7c76e06a28112efba6190fc4bc70074452/flowchart.png)
+ 
