@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Properties </title>
+  <title>Properties</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -12,7 +12,18 @@
   <link rel="stylesheet" href="style.css">
 
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    table thead th {
+      color: white;
+    }
+    table#property-table tbody tr {
+      color: white;
+    }
+  </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar-example2" tabindex="0">
@@ -21,217 +32,100 @@
 
   <header id="nav" class="site-header position-fixed text-white bg-dark">
     <nav id="navbar-example2" class="navbar navbar-expand-lg ">
-     
-      <div class="container ">
-      
-        <a class="navbar-brand" href="./index.html">Proptee</a>
-
-
-        <button class="navbar-toggler text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation"><ion-icon name="menu-outline"></ion-icon></button>
-
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar2" aria-labelledby="offcanvasNavbar2Label">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbar2Label">Menu</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end align-items-center flex-grow-1 ">
-              <li class="nav-item">
-                <a class="nav-link me-4" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="properties.html">Let's Buy, Rent, and Sell!</a>
-              </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link me-4" href="#">Renting</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#">Selling</a>
-              </li> -->
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#contact">Contact Us</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link me-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pages</a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a href="about.html" class="dropdown-item">About</a></li>
-                  <li><a href="contact.html" class="dropdown-item">Contact</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link me-4" href="#"></a>
-              </li>
-  
-              <li class="nav-item">
-                <a class="nav-link me-4" href="./loginRegister.html">Login</a>
-              </li>
-  
-              <li class="nav-item">
-                <a class="btn-medium btn btn-primary" href="./loginRegister.html">Sign up</a>
-              </li>
-            </ul>
-         
-          </div>
-        </div>
-
-      
-      </div>
+      <!-- ... (your existing code) ... -->
     </nav>
   </header>
 
-	
-  <section id="page-billboard">
-    <div id="home" class="container  ">
-      <div class="page-billboard-container">
-        <h1  class=" text-capitalize  lh-1 mb-3">Our Properties</h1>
-        <span class="item"><a href="index.html" class="text-white">Home</a></span> &nbsp; / &nbsp; <span class="item">Properties</span>  
+  <!-- nav bar end  -->
+
+  <!-- properties section start -->
+
+  <section id="properties" class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="section-heading">Properties</h2>
+      <div>
+        <a href="addproperties.html" class="btn btn-primary me-2">Add Properties</a>
+        <a href="deleteproperties.html" class="btn btn-danger">Remove Properties</a>
       </div>
     </div>
-  </section>
-	
-	
-  <section id="residence">
-    <div id="home" class="container  my-5 py-5">
-      <h2 class="text-capitalize m-0 py-lg-5">Popular Residence</h2>
-      <button type="button" class="btn btn-primary btn-lg  px-4  my-lg-1">Add Properties</button>
-      <button type="button" class="btn btn-primary btn-lg  px-4  my-lg-1">Remove Properties</button>
-
-        <!-- <div class="swiper-button-next residence-swiper-next residence-arrow"></div>
-        <div class="swiper-button-prev residence-swiper-prev residence-arrow"></div> -->
-
-      <!-- <div class="swiper residence-swiper">
-        <div class="swiper-wrapper"> -->
-
-          <!-- <div class="swiper-slide"> -->
-            <div class="card">
-              <div class="card-body p-0">
-                <h5 class="card-title pt-4">Margonda Residence</h5>
-                <p class="card-text">House</p>
-                <p class="card-text">Address: Jl. Margonda Raya Pondok Cina, 16424, Jawa Barat</p>
-                <p class="card-text">Price:Rp5.000.000</p>
-                <p class="card-text">Agent Id: 5</p>
-                <p class="card-text">Status: For Rent</p>
-
-                <div class="card-text">
-                  <ul class="d-flex">
-                    <li class="residence-list"> <img src="images/bed.png" alt=""> 1 bed</li>
-                    <li class="residence-list"> <img src="images/bath.png" alt=""> 1 bath</li>
-                    <li class="residence-list"> <img src="images/square.png" alt=""> 500 m2.</li>
-                  </ul>
-
-                  <a href="payment.html"><button type="button" class="btn btn-primary btn-lg  px-4  my-lg-1">I want this!</button></a>
-                </div>
-
-              </div>
-            </div>
-          <!-- </div> -->
-          <!-- <div class="swiper-slide"> -->
-            <div class="card">
-              <!-- <img src="./images/tamel.jpg" class="card-img-top" alt="..."> -->
-              <div class="card-body p-0">
-                <h5 class="card-title pt-4">Apartemen Taman Melati Margonda</h5>
-                <p class="card-text">Apartment</p>
-                <p class="card-text">Address: Jl. Margonda Raya, Depok</p>
-                <p class="card-text">Price:Rp3.000.000</p>
-                <p class="card-text">Agent Id: 5</p>
-                <p class="card-text">Status: For Sale</p>
-
-                <div class="card-text">
-                  <ul class="d-flex">
-                    <li class="residence-list"> <img src="images/bed.png" alt=""> 2 bed</li>
-                    <li class="residence-list"> <img src="images/bath.png" alt=""> 1 bath</li>
-                    <li class="residence-list"> <img src="images/square.png" alt=""> 600 m2.</li>
-                  </ul>
-                  <a href="payment.html"><button type="button" class="btn btn-primary btn-lg  px-4  my-lg-1">I want this!</button></a>
-                </div>
-
-              </div>
-            </div>
-          <!-- </div> -->
-          <!-- <div class="swiper-slide"> -->
-            <div class="card">
-              <a class="nav-link me-4" href="./payment.html">
-              <!-- <img src="images/Cimanggis-Golf-Estate-Depok-Indonesia.jpg" class="card-img-top" alt="..."> </a> -->
-              <div class="card-body p-0">
-                <h5 class="card-title pt-4">Cimanggis Golf Estate</h5>
-                <p class="card-text">House</p>
-                <p class="card-text">Address: Depok</p>
-                <p class="card-text">Price:Rp5.000.000.000</p>
-                <p class="card-text">Agent Id: 5</p>
-                <p class="card-text">Status: For Sale</p>
-
-                <div class="card-text">
-                  <ul class="d-flex">
-                    <li class="residence-list"> <img src="images/bed.png" alt=""> 2-4 bedrooms</li>
-                    <li class="residence-list"> <img src="images/bath.png" alt=""> 1-4 bathrooms</li>
-                    <li class="residence-list"> <img src="images/square.png" alt=""> 56-164 m2.</li>
-                  </ul>
-                  <a href="payment.html"><button type="button" class="btn btn-primary btn-lg  px-4  my-lg-1">I want this!</button></a>
-                </div>
-
-              </div>
-            </div>
-          <!-- </div> -->
-          <!-- <div class="swiper-slide"> -->
-            <div class="card">
-              <!-- <img src="./images/gardeniapark.webp" class="card-img-top" alt="..."> -->
-              <div class="card-body p-0">
-                <a href="https://www.rumah.com/listing-properti/dijual-gardenia-park-oleh-sarah-auliantika-adlina-21662471"><h5 class="card-title pt-4">Gardenia Park</h5></a>
-                <p class="card-text">House</p>
-                <p class="card-text">Address: Jl. Koni, Sawangan, Depok, Jawa Barat</p>
-                <p class="card-text">Price:Rp9.000.000.000</p>
-                <p class="card-text">Agent Id: 5</p>
-                <p class="card-text">Status: For Sale</p>
-
-                <div class="card-text">
-                  <ul class="d-flex">
-                    <li class="residence-list"> <img src="images/bed.png" alt=""> 3 bedrooms</li>
-                    <li class="residence-list"> <img src="images/bath.png" alt=""> 2 bathrooms</li>
-                    <li class="residence-list"> <img src="images/square.png" alt=""> 70 m2.</li>
-                  </ul>
-                  <a href="payment.html"><button type="button" class="btn btn-primary btn-lg  px-4  my-lg-1">I want this!</button></a>
-                </div>
-
-              </div>
-            </div>
-          <!-- </div> -->
-        <!-- </div>
-      </div> -->
+    <div class="table-responsive">
+      <table class="table" id="property-table">
+        <thead>
+          <tr>
+            <th>Property ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Address</th>
+            <th>Area</th>
+            <th>Price</th>
+            <th>Bedrooms</th>
+            <th>Bathrooms</th>
+            <th>Agent ID</th>
+            <th>Status</th>
+            <th></th>
+            <!-- Add more attribute columns here -->
+          </tr>
+        </thead>
+        <tbody id="property-list"></tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Footer start  -->
-  <section id="footer">
-    <div class="container footer-container">
-      <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5  ">
+  <!-- properties section end -->
 
-        <div class=" col-md-4">
-          <h3>Proptee</h3>
-          <p>Find Your Properties Right Away!</p>
-        </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async() => {
+      const tableBody = $('#property-table tbody');
 
-        <div class="col-md-2 ">
-          <h5>Project</h5>
-          <ul class="nav flex-column">
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Houses</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Rooms</a></li>
-            <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Apartments</a></li>
-          </ul>
-        </div>
-      </footer>
+      try {
+        const response = await axios.get('/pt/showproperties');
+        console.log(response); // Log the response to inspect its structure
 
-  
+        // Handle the successful response here
+        if (response.data.message === 'Property Found') {
+          const properties = response.data.showProperties;
+          properties.forEach(function(property) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${property.property_id}</td>
+              <td>${property.nama}</td>
+              <td>${property.description}</td>
+              <td>${property.alamat}</td>
+              <td>${property.luas}</td>
+              <td>${property.harga}</td>
+              <td>${property.jumlah_kamar}</td>
+              <td>${property.jumlah_kamar_mandi}</td>
+              <td>${property.agent_id}</td>
+              <td>${property.status}</td>
+              <td><button class="btn btn-primary" onclick="redirectToPayment(${property.property_id})">I want this</button></td>
+            `;
+            tableBody.append(row);
+          });
+          // Initialize DataTables plugin
+          $("#property-table").DataTable();
+        } else {
+          // Show error message to the user
+          console.error(response.data.message);
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle error here (e.g., show error message to the user)
+      }
+    });
 
+    function redirectToPayment(propertyId) {
+      // Perform the desired action when the button is clicked
+      console.log(`Redirecting to payment for Property ID: ${propertyId}`);
+      // You can add your logic here to handle the redirect to payment.html
+      window.location.href = `payment.html?propertyId=${propertyId}`;
+    }
+  </script>
 
-  <script src="js/jquery-1.11.0.min.js"></script>
-  <script src="js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-r+fAUIWqlquh+0Z5mtbT9vzzzXGcn1Bb0Q3lTwetUQZmxtBlddFaj1WyCOopzKnF" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-    crossorigin="anonymous"></script>
+    integrity="sha384-jzk2xxA6+tSd1D9+Z5ZGgCzP6/yj17XbATccrlIZjAn+V7Lfdz0kIeTcsNu8Qbmd" crossorigin="anonymous"></script>
 </body>
 
 </html>

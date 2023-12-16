@@ -187,6 +187,28 @@ async function addProperties (pt, agent){
 
 async function showProperties (agent){
     if(agent){
+        const query = `SELECT * FROM properties`;
+        const result = await db.query(query);
+        if(result.rowCount > 0){
+            return {
+                message: 'Property Found',
+                showProperties : result.rows
+            }
+        }else{
+            return{
+                message: 'No property Found' 
+            } 
+        }
+    }
+    else{
+        return {
+            message: 'User not logged in'
+        }
+    }
+}
+
+async function searchProperties (agent){
+    if(agent){
         const query = `SELECT * FROM properties WHERE property_id=${agent.property_id}`;
         const result = await db.query(query);
         if(result.rowCount > 0){
@@ -256,6 +278,28 @@ async function addTransactions (pt, user){
 
 async function showTransactions (user){
     if(user){
+        const query = `SELECT * FROM transactions`;
+        const result = await db.query(query);
+        if(result.rowCount > 0){
+            return {
+                message: 'Transaction Found',
+                showTransactions : result.rows
+            }
+        }else{
+            return{
+                message: 'No transaction Found' 
+            } 
+        }
+    }
+    else{
+        return {
+            message: 'User not logged in'
+        }
+    }
+}
+
+async function searchTransactions (user){
+    if(user){
         const query = `SELECT * FROM transactions WHERE transaction_id=${user.transaction_id}`;
         const result = await db.query(query);
         if(result.rowCount > 0){
@@ -313,5 +357,7 @@ module.exports = {
     addTransactions,
     showTransactions,
     updateProperties,
-    updateTransactions
+    updateTransactions,
+    searchProperties,
+    searchTransactions
 }

@@ -127,6 +127,24 @@ async function updateTransactions(req,res){
     }
 }
 
+async function searchProperties(req,res){
+    try{
+        const result = await ptService.searchProperties(req.body);
+        res.json(result);
+    }catch(err){
+        res.json(err);
+    }
+}
+
+async function searchTransactions(req,res){
+    try{
+        const result = await ptService.searchTransactions(req.body);
+        res.json(result);
+    }catch(err){
+        res.json(err);
+    }
+}
+
 module.exports = {
     userLogin,
     userRegister,
@@ -141,5 +159,7 @@ module.exports = {
     addTransactions,
     showTransactions,
     updateProperties,
-    updateTransactions
+    updateTransactions,
+    searchProperties,
+    searchTransactions
 }

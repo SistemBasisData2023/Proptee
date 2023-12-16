@@ -30,4 +30,8 @@ router.put('/updateproperties', ptController.updateProperties);
 
 router.put('/updatetransactions', ptController.updateTransactions);
 
+router.get('/searchproperties', ptController.searchProperties);
+
+router.get('/searchtransactions', ptController.searchTransactions);
+
 module.exports = router;
